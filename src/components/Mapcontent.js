@@ -56,42 +56,48 @@ const Mapcontent = () => {
     return (
         <div>
             
-            <div style={{ 
-                display: 'flex', 
-                gap: '10px', 
-                padding: '10px', 
+            <div
+            style={{
+                display: 'flex',
+                gap: '10px',
+                padding: '10px',
                 backgroundColor: '#f8f8f8',
                 borderBottom: '1px solid #ddd',
-                flexWrap: 'wrap' 
-            }}>
-                
+                flexWrap: 'wrap',
+                flexDirection: 'column' // stack vertically
+            }}
+            >
+            <div style={{ display: 'flex', gap: '10px' }}>
                 <CSVUpPlot 
-                    ref = {csvPlotRef}
-                    setCSVData={setCSVUpData} 
-                    fit2screen={fit2screen} 
+                ref={csvPlotRef}
+                setCSVData={setCSVUpData}
+                fit2screen={fit2screen}
                 />
                 
                 <WKTUpPlot 
-                    ref = {wktPlotRef}
-                    setWKTGeoJSONData={setWKTGeoJSONData} 
-                    fitToBounds={fitToBoundsWKT} 
+                ref={wktPlotRef}
+                setWKTGeoJSONData={setWKTGeoJSONData}
+                fitToBounds={fitToBoundsWKT}
                 />
+            </div>
 
+            <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 <button 
-                    onClick={clearCSVMarkers} 
-                    style={{ padding: '8px 15px', border: '1px solid #e74c3c', background: '#f9f9f9', cursor: 'pointer', color: '#e74c3c' }}
-                    disabled={!CSVUpData} 
+                onClick={clearCSVMarkers}
+                style={{ padding: '8px 15px', border: '1px solid #e74c3c', background: '#f9f9f9', cursor: 'pointer', color: '#e74c3c' }}
+                disabled={!CSVUpData}
                 >
-                    Clear Markers
+                Clear Markers
                 </button>
                 
                 <button 
-                    onClick={clearWKTPolygons} 
-                    style={{ padding: '8px 15px', border: '1px solid #3498db', background: '#f9f9f9', cursor: 'pointer', color: '#3498db' }}
-                    disabled={!WKTGeoJSONData}
+                onClick={clearWKTPolygons}
+                style={{ padding: '8px 15px', border: '1px solid #3498db', background: '#f9f9f9', cursor: 'pointer', color: '#3498db' }}
+                disabled={!WKTGeoJSONData}
                 >
-                    Clear Polygons
+                Clear Polygons
                 </button>
+            </div>
             </div>
             
             <MapContainer 
